@@ -12,7 +12,7 @@ body {
     /*text-align: justify;*/
 }
 
-.content {
+div#content {
     margin-left: 5%;
     margin-right: 5%;
 }
