@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Title</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="navbar"></div>
+    <div class="content">
+        <h1>Title</h1>
+
+        <h2>Second heading</h2>
+
+        <p>Text</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+        <textarea id="yourcode" cols="40" rows="10" class="python-code">print("Hello World!")</textarea><br /> 
+        <button type="button" onclick="runit('yourcode', 'output')">Run</button> 
+        </form></small>
+        </p>
+        <label class="python-label">OUTPUT</label>
+        <pre id="output" class="code-output"></pre>
+        <!--END CODE----------------------------------------------------------->
+    </div>
+</body>
+    <footer id="footer"></footer>
+    <script src="skulpt-dist-master/skulpt.min.js"></script>
+    <script src="skulpt-dist-master/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</html>
