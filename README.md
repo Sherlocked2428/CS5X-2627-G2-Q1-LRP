@@ -6,7 +6,7 @@
 
 Write your content in HTML inside the `div` element with ID `content`, with paragraphs within the `p` tag. Note that $\LaTeX$ for math typesetting is supported via MathJax, and all Bootstrap 5.3 functionality is supported.
 
-Python code is also supported via Skulpt; please follow this format when including Python code snippets.
+Python code is also supported via Skulpt; please follow this format when including Python code snippets. **NOTE: Do not include the last two lines before the `END CODE` comment for now.**
 - Please be sure to change all instances of the `yourcode` and `output` IDs (corresponding to the code snippet and its output, respectively) in order for the IDs of the code snippets to not collide.
 - You may edit your code inside the `textarea`; please make sure that the first line of your Python code starts right after the `<textarea>` tag and the last line ends right before the `</textarea>` tag (both without any whitespace between).
 - When the user clicks the `Run` button, the output will be displayed inside the `pre` tag. Input (i.e. user input whenever the `input` function is used) is collected using JavaScript alerts.

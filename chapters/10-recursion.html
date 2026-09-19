@@ -13,9 +13,123 @@
   <div id="navbar"></div>
     <div id="content">
         <h1>Recursion</h1>
-        <p class="lead">Written by [name]</p>
+        <p class="lead">Written by Kaiser Chan</p>
+
+        <div class="output-div noprint">
+        <details id="output-hide">
+            <summary>Python Output</summary>
+            <label class="python-label">OUTPUT</label>
+            <pre id="output" class="code-output"></pre>
+        </details>
+        </div>
 
         <!--content here-->
+        <h2>Introduction: Terms in a sequence</h2>
+        <p>Consider the following problem.</p>
+        <div class="ex">
+        <div class="ex-header">Example 1</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Let $a_n$ denote the $n$th term of a sequence for any nonnegative integer $n$. We define this sequence so that $a_0=1$ and $a_n=2a_{n-1}+n$ when $n$ is an integer greater than $0$.</p>
+            <p>Write a program that outputs the value of $a_n$ when given the value of $n$.</p>
+        </div>
+        </div>
+
+        <p>To make things easier to understand, let's make a function <code>seq</code> that, when given a nonnegative integer $n$, returns the value of $a_n$. The easiest thing we can do is to first make it output the value of $a_0$: if <code>n == 0</code>, then <code>seq(n) = 1</code>.</p>
+        
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-1" rows="6" class="python-code">
+def seq(n):
+    if n == 0:
+        return 1
+
+# testing the function
+print(seq(0))</textarea><br /> 
+        <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <p>Now, if <code>n > 0</code>, then the value of <code>seq(n)</code> is <code>2 * seq(n-1) + n</code> from the given formula for $a_n$. Let's put this in our code, and test a few values:</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-2" class="python-code">
+def seq(n):
+    if n == 0:
+        return 1
+    if n > 0:
+        return 2 * seq(n-1) + n
+
+# testing the function
+print(seq(0))
+print(seq(4))
+print(seq(-4))
+print(seq("hello"))</textarea><br /> 
+        <button type="button" onclick="runit('code-2')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <p>Okay, great; it computes $a_4=42$ correctly. However, notice that if we pass values into <code>seq</code> that are not nonnegative integers, we don't get the output we want (<code>None</code> for <code>seq(-4)</code> and a <code>TypeError</code> for <code>seq("hello")</code>). To fix this, we must add exception handling so that we get a custom <code>ValueError</code> for anything that is not a nonnegative integer:</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-3" class="python-code">
+def seq(n):
+    if type(n) != int:
+        raise TypeError("Invalid value; must be a nonnegative integer")
+    if n < 0:
+        raise ValueError("Invalid value; must be a nonnegative integer")
+    if n == 0:
+        return 1
+    if n > 0:
+        return 2 * seq(n-1) + n
+
+# testing the function
+print(seq(0))
+print(seq(4))
+print(seq(-4))
+print(seq("hello"))</textarea><br /> 
+        <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <h2>Parts of a recursion</h2>
+
+        <p>A <b>recursion</b> is a function that is defined in terms of itself, i.e., it calls itself at some time in its execution. For instance, in the previous example, the <code>seq</code> function calls itself when extracting the previous term. A recursion has four parts:
+        <ul>
+            <li>the <b>base case/s</b>, the condition/s where the function <i>does not</i> call itself (and thus stops the function from going in an infinite loop);</li>
+            <li>the <b>base definition</b>, the value of the function (which must not call itself) at the base case/s;</li>
+            <li>the <b>recursive case/s</b>, the condition/s where the function calls itself; and</li>
+            <li>the <b>recursive definition</b>, the value of the function (which must call itself) at the recursive case/s.</li>
+        </ul></p>
+
+        <p>So, for our sequence, we can define it by writing it as a piecewise-defined function, then determining the parts from there. (We use this notation because it is visually easier to understand.) In our definition below, the base case is colored $\textcolor{red}{\text{red}}$, the base definition is colored $\textcolor{orange}{\text{orange}}$, the recursive case is colored $\textcolor{green}{\text{green}}$, and the recursive definition is colored $\textcolor{blue}{\text{blue}}$.
+        
+        \[a_n=\begin{cases}\textcolor{orange}{1}&\textcolor{red}{\text{if $n=0$}}\\\textcolor{blue}{2a_{n-1}+n}&\textcolor{green}{\text{if $n>0$ and $n$ is an integer}}\end{cases}.\]
+        </p>
+
+        <p>Let's look at a different example, this time without the function being explicitly defined.</p>
+
+        <div class="ex">
+        <div class="ex-header">Example 2</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Identify the parts of the recursion used to generate the box sizes in this meme (taken from <a href="https://medium.com/launch-school/what-is-recursion-an-introduction-and-technical-discussion-3c81547d03f0">here</a>):</p>
+            <p><center><img src="images/recursion-meme.png" width="400"></center></p>
+        </div>
+        </div>
+
+        <p>Text</p>
+
+        <h2>Memoization</h2>
     </div>
 </body>
     <footer id="footer"></footer>

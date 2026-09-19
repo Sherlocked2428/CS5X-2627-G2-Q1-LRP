@@ -15,6 +15,14 @@
         <h1>Title</h1>
         <p class="lead">Written by [name]</p>
 
+        <div class="output-div noprint">
+        <details id="output-hide">
+            <summary>Python Output</summary>
+            <label class="python-label">OUTPUT</label>
+            <pre id="output" class="code-output"></pre>
+        </details>
+        </div>
+
         <h2>Second heading</h2>
 
         <p>Text $\sqrt{n}$</p>
@@ -23,15 +31,15 @@
         <p>
         <form> 
         <label class="python-label">PYTHON CODE</label>
-<textarea id="yourcode" cols="40" rows="10" class="python-code">
+<textarea id="yourcode" class="python-code">
 print("Hello World!")
 </textarea><br /> 
-        <button type="button" onclick="runit('yourcode', 'output')" class="btn btn-success">Run</button> 
+        <button type="button" onclick="runit('yourcode')" class="btn btn-success">Run</button> 
         </form>
         </p>
-        <label class="python-label">OUTPUT</label>
-        <pre id="output" class="code-output"></pre>
         <!--END CODE----------------------------------------------------------->
+
+        <p>Text</p>
     </div>
 </body>
     <footer id="footer"></footer>

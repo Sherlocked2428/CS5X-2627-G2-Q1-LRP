@@ -4,7 +4,7 @@
 // to a pre element.
 function outf(text) { 
     var mypre = document.getElementById("output"); 
-    mypre.innerHTML = mypre.innerHTML + text; 
+    mypre.innerHTML = mypre.innerHTML + text;
 } 
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
@@ -17,12 +17,12 @@ function builtinRead(x) {
 // get a reference to your pre element for output
 // configure the output function
 // call Sk.importMainWithBody()
-function runit(codeId, outputId) { 
+function runit(codeId) { 
    var prog = document.getElementById(codeId).value; 
-   var mypre = document.getElementById(outputId); 
+   var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
    Sk.pre = "output";
-   Sk.configure({output:outf, read:builtinRead}); 
+   Sk.configure({output:outf, read:builtinRead, execLimit:10000}); 
    (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
    var myPromise = Sk.misceval.asyncToPromise(function() {
        return Sk.importMainWithBody("<stdin>", false, prog, true);
@@ -32,5 +32,7 @@ function runit(codeId, outputId) {
    },
        function(err) {
        console.log(err.toString());
+       mypre.innerHTML = mypre.innerHTML + err.toString();
    });
-} 
+   document.getElementById("output-hide").open = true;
+}
