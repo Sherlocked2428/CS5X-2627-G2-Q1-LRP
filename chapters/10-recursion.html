@@ -112,9 +112,9 @@ print(seq("hello"))</textarea><br />
             <li>the <b>recursive definition</b>, the value of the function (which must call itself) at the recursive case/s.</li>
         </ul></p>
 
-        <p>So, for our sequence, we can define it by writing it as a piecewise-defined function, then determining the parts from there. (We use this notation because it is visually easier to understand.) In our definition below, the base case is colored $\textcolor{red}{\text{red}}$, the base definition is colored $\textcolor{orange}{\text{orange}}$, the recursive case is colored $\textcolor{green}{\text{green}}$, and the recursive definition is colored $\textcolor{blue}{\text{blue}}$.
+        <p>So, for our sequence, we can define it by writing it as a piecewise-defined function, then determining the parts from there. (We use this notation because it is visually easier to understand.) In our definition below, the base case is colored $\textcolor{red}{\text{red}}$, the base definition is colored $\textcolor{orange}{\text{orange}}$, the recursive case is colored $\textcolor{lightgreen}{\text{green}}$, and the recursive definition is colored $\textcolor{lightblue}{\text{blue}}$.
         
-        \[a_n=\begin{cases}\textcolor{orange}{1}&\textcolor{red}{\text{if $n=0$}}\\\textcolor{blue}{2a_{n-1}+n}&\textcolor{green}{\text{if $n>0$ and $n$ is an integer}}\end{cases}.\]
+        \[a_n=\begin{cases}\textcolor{orange}{1}&\textcolor{red}{\text{if $n=0$}}\\\textcolor{lightblue}{2a_{n-1}+n}&\textcolor{lightgreen}{\text{if $n>0$ and $n$ is an integer}}\end{cases}.\]
         </p>
 
         <p>Let's look at a different example, this time without the function being explicitly defined.</p>
@@ -127,9 +127,43 @@ print(seq("hello"))</textarea><br />
         </div>
         </div>
 
-        <p>Text</p>
+        <details>
+            <summary>Solution to Example 2</summary>
+            
+            <p>Let's number the boxes according to size, with the largest being the $0$th box, the second largest being the $1$st box, and so on, and let $s(n)$ be the size of the $n$th box. Suppose the $0$th box has size $S$. Then, our base case is $n=0$, and our base definition is $s(n)=S$.</p>
+
+            <p>Now, since the size of each box is a constant multiplied to the size of the previous box, we have that $s(n)=c\cdot s(n-1)$ for some constant $c$ when $n$ is a integer greater than zero. So, our recursive case is $n>0$ and $n$ is an integer, and our recursive definition is $s(n)=c\cdot s(n-1)$.</p>
+        </details>
+
+        <p>Developing a program that computes the size of each box given certain parameters will be deferred to the problem section.</p>
 
         <h2>Memoization</h2>
+
+        <p>Okay, recursion is a great method of doing things, but it has one fundamental flaw. Try running this program, which contains our <code>seq</code> function from earlier:</p>
+
+         <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-4" class="python-code">
+def seq(n):
+    if type(n) != int:
+        raise TypeError("Invalid value; must be a nonnegative integer")
+    if n < 0:
+        raise ValueError("Invalid value; must be a nonnegative integer")
+    if n == 0:
+        return 1
+    if n > 0:
+        return 2 * seq(n-1) + n
+
+# testing the function
+print(seq(9999))</textarea><br /> 
+        <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <p>We end up getting a <code>RecursionError</code> that says <code>Maximum call stack size exceeded</code>. Why is that? Well, whenever our function calls itself, it adds another layer to what is called the <b>call stack</b>, which contains the function calls that are in progress, so that the currently running function can use it. However, the number of layers has a limit, so once this limit is reached, a <b>stack overflow</b> occurs, and the recursion cannot be completed. This is pretty bad, since this means that we cannot use our <code>seq</code> function to calculate large terms (our web interpreter breaks down starting with <code>seq(8193)</code>).</p>
     </div>
 </body>
     <footer id="footer"></footer>
