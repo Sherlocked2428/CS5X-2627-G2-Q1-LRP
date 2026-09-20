@@ -23,7 +23,134 @@
         </details>
         </div>
 
-        <p>hey baddies</p>
+        <!--content here-->
+        <h2>Introduction: Kinds of control structures</h2>
+        <div class="ex">
+        <div class="ex-header">Sequential</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Sequential control structures execute statements in a linear fashion, one after another.</p>
+        </div>
+        </div>
+        
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-1" rows="4" class="python-code">
+print("You are amazing!")
+print("You are beautiful!")
+print("You are cool!")
+print("\nDid you notice everything printed?")
+</textarea><br /> 
+        <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <div class="ex">
+        <div class="ex-header">Conditional</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Conditional control structures execute different statements based on whether a condition is true or false.</p>
+        </div>
+        </div>
+        
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-2" rows="8" class="python-code">
+greeting = "Hello!"
+
+if greeting == "Hello!":
+    print("Hi!")
+else:
+    print("Goodbye!")
+
+print("\nDid you notice only one statement printed? It was the one that corresponded to the condition being where greeting is equal to \"Hello!\", which is true.")
+</textarea><br /> 
+        <button type="button" onclick="runit('code-2')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <p>But wait! Not all conditional control structures are if-else statements. If-else if statements are a more complex forms conditional control structures.</p>
+        <p>In Python, else if is written as <code>elif</code>.</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-3" rows="12" class="python-code">
+greeting = "What's up?"
+
+if greeting == "Hello!":
+    print("Hi!")
+elif greeting == "Heyy":
+    print("Hey there!")
+elif greeting == "What's up?":
+    print("Not much, you?")
+else:
+    print("Goodbye!")
+
+print("\nDid you notice only one statement printed? \"Hello!\" and \"Heyy\" are not correct values for greeting, but \"What's up?\" is and so its corresponding statement actually printed.")
+</textarea><br /> 
+        <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <div class="ex">
+        <div class="ex-header">Iterative</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Iterative control structures execute statements repeatedly until a certain condition is met.</p>
+            <p>There are two types of iterative control structures in terms of logic: <code>pre-tests</code> and <code>post-tests</code>.</p>
+            <p>Iterative control structures are often executed with <code>for</code> and <code>while</code> loops.</p>
+        </div>
+        </div>
+        
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-4" rows="9" class="python-code">
+# Pre-test
+# The condition goes before the loop
+
+var = 5
+
+while var > 0:
+    var = var - 1
+print(var)
+print("var should be 0 now")
+</textarea><br /> 
+        <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-5" rows="12" class="python-code">
+# Post-test
+# The loop goes before the condition
+
+var = 1
+
+while var > 0:
+    var = var + 1
+    if (var > 2): 
+        break
+
+print(var)
+print("var should be 3 now")
+</textarea><br /> 
+        <button type="button" onclick="runit('code-5')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
     </div>
 </body>
     <footer id="footer"></footer>
