@@ -13,9 +13,57 @@
   <div id="navbar"></div>
     <div id="content">
         <h1>Functions</h1>
-        <p class="lead">Written by [name]</p>
+        <p class="lead">Written by Madie Avante</p>
+
+        <div class="output-div noprint">
+        <details id="output-hide">
+            <summary>Python Output</summary>
+            <label class="python-label">OUTPUT</label>
+            <pre id="output" class="code-output"></pre>
+        </details>
+        </div>
 
         <!--content here-->
+        <h2>Introduction: What are functions?</h2>
+        <div class="ex">
+        <div class="ex-header">Definition</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Functions are reusable blocks of code that perform a specific task. They allow you to organize your code into logical units and avoid repetition.</p>
+        </div>
+        <div class="ex-header">Parts</div>
+        <div class="ex-content" style="text-align: left;">
+            <p><code>Definition</code>: The definition of a function is done using the <code>def</code> keyword, followed by the function name and parentheses.</p>
+            <p><code>Parameters</code>: Parameters are values that can be passed into a function to customize its behavior. They are defined within the parentheses of the function definition.</p>
+            <p><code>Body</code>: The body of a function contains the code that will be executed when the function is called. It is indented below the function definition.</p>
+            <p><code>Return</code>: The return statement, using the <code>return</code> keyword is used to specify the value that a function will return when it is called. It is optional and can be omitted if the function does not need to return a value.</p>
+        </div>
+        </div>
+        
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-1" rows="11" class="python-code">
+def my_function(name):
+    print(f"Hello, {name}! You WILL survive perios!")
+    return name + " is the return value and effectively exits the function."
+    print("This will not be printed because the function has already returned.")
+my_function("stranger")
+
+print("-"*20)
+
+#Check the return!
+print(my_function("Pisay student"))
+print("\nDid you notice that the return value is printed when we 'print' the function call? This is because the return value is passed back to the caller, and we can choose to print it.")
+</textarea><br /> 
+        <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <h3 style="border-top: 2px solid #6DA5C0">Reference</h3>
+        <p>Python Functions. (n.d.). W3Schools. https://www.w3schools.com/python/python_functions.asp</p>
+
     </div>
 </body>
     <footer id="footer"></footer>
