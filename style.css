@@ -11,6 +11,7 @@ body {
     margin: auto;
     /*padding-bottom: 100px;*/
     /*text-align: justify;*/
+    color: #9CFFD8;
 }
 
 div#content {
@@ -38,7 +39,8 @@ nav {
 }
 .ex-header {
     padding: 5px;
-    color: 05161A;
+    color: #05161A;
+    background-color: #00CCFF;
     font-weight: bold;
 }
 .ex-content {
@@ -208,7 +210,8 @@ textarea {
 }
 
 textarea {
-    resize: vertical;
+    resize: none;
+    field-sizing: content;
 }
 
 pre {
@@ -222,8 +225,8 @@ textarea.python-code, pre.code-output {
 label.python-label {
     margin-bottom: 0%;
     padding: 2px;
-    background-color: #7ea7fe;
-    color: white;
+    background-color: #1CF3FF;
+    color: #05161A;
     font-weight: bold;
     font-size: 10px;
 }
@@ -264,9 +267,9 @@ div.output-div {
     right: 5px;
     width:50%;
     padding: 10px;
-    background-color: #fff;
+    background-color: #05161A;
     z-index: 10;
-    /*border: 2px solid slategray;*/
+    border: 2px solid #00CCFF;
     border-radius: 5px;
     overflow: auto;
 }
