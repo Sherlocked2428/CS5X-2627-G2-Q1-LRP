@@ -13,9 +13,316 @@
   <div id="navbar"></div>
     <div id="content">
         <h1>Collections</h1>
-        <p class="lead">Written by [name]</p>
+        <p class="lead">Written by Lawrence Cerenado</p>
+        <div class="output-div noprint">
+        <details id="output-hide">
+            <summary>Python Output</summary>
+            <label class="python-label">OUTPUT</label>
+            <pre id="output" class="code-output"></pre>
+        </details>
+        </div>
+        <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
+            <h4 style = "color:rgb(252, 252, 252)"> 📁 What is a collection? </h4>
+            Collections are objects that are <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252); border-radius:0.1cm"> iterable, sized containers</mark>.
+            <ul>
+                <li> <b>Containers</b> are objecets that can contain other objects.</li>
+                <li> <b>Iterable </b>means that these objects can return their elements one at a time,</li>
+                <li>And <b>sized</b> means that these collections have a length.</li>
+            </ul>
+            Putting these together: collections are objects with a length, containing other objects, able to return their elements one at a time. (Gruppetta, 2023)
+        </div>
+        <br>
+        <div style = "background-color:rgb(14, 66, 48); padding:1%">
+            <h4 style = "color:rgb(252, 252, 252)">Example</h4>
+            <p>For example, if we list down 5 animals on a paper: </p>
+            <ol> 
+                <i>5 Animals:</i>
+                <li>giraffe</li>
+                <li>elephant</li>
+                <li>cat</li>
+                <li>whale</li>
+                <li>jellyfish</li>
+            </ol>
+            This is a collection because it has a length (5), it contains other objects (the animals), and I can return you one of the listed objects there. 
 
-        <!--content here-->
+            <p>In Python, they are data types which are very useful when simple data types like 
+            int, str, or float are no longer sufficient for your program needs. These include: <code>list</code>,
+            <code>set</code>, <code>tuple</code>, and <code>dict</code>.  </p>
+        </div>
+        <h2>Order and Mutability</h2>
+        <h3>Order</h3>
+            An <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252);border-radius:0.1cm">ordered</mark> collection means that the specified order in a collection is fixed and it is preserved unless we update the items. Ordered objects contain 
+            <b>strings, lists, tuples, ranges, and dictionaries</b>, some of which we will discuss later. One example of an unordered collection is a set. 
+            See the code below: 
+            <p>
+                <form> 
+                    <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-3" rows="12" class="python-code">
+orderedCollection = ["math", "science", "english", "history"]  
+unorderedCollection = set(orderedCollection)
+
+print(orderedCollection)
+print(unorderedCollection)
+
+# what happens if we get unorderedCollection[2]? 
+# notice we can put orderedCollection[2] but not unorderedCollection[2] as sets have no order and doesn't support indexes.             
+                        </textarea><br /> 
+                    <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+                    </form>
+                    </p>    
+        <h3>Mutability</h3>
+        The <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252);border-radius:0.1cm">mutability</mark> 
+ of a collection indicates whether we can modify the collection or not. A <code>list</code> for example, 
+        is mutable, (as we can see later on) we can add, modify, or remove items from the list. However, an immutable collection 
+        means we can't add, modify, or remove items from the list. One example of this we will see later is a <code>tuple</code>.
+        <h2>Lists</h2>
+        <div>
+            <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252);border-radius:0.1cm"> Lists</mark> 
+            are collections that are ordered, mutable sequences. A list can be made up of data with different data types. One list can contain 
+            <code>int</code>, <code>float</code>, and <code>str</code>. A list is defined by square brackets "[]" with elements separated by 
+            a comma "," within the square brackets.
+            <br><br>
+            For example, this is a list: <code>myList = [12, 21, 35, "a", "b", 1.5]</code>
+        </div>
+        <h3> Manipulating Lists</h3>
+            We can do a lot with lists because they are mutable. These are some of the methods that <code>list</code> supports:
+            <ul>
+                <li><code>list.append(value)</code>: The <code>.append</code> methods adds <code>value</code> to the end of the list.</li>
+                <li><code>list.insert(index, value)</code>: Inserting a specified <code>value</code> at a specified <code>index</code>. It is placed in front of the
+                item currently in front of the index.</li>
+                <li><code>list.remove(value)</code>: It removes the first item from the list whose value is equal to <code>value</code>. 
+                If there is none, a <code>ValueError</code> would be raised.</li>
+                <li><code>list.pop(index)</code>: It removes the item at the given position and return it. If there is no <code>index</code> specified, it simply
+                returns the last item in the list. If it is empty or the index is outside the list range, it will return an  <code>IndexError</code>. </li>
+                <li><code>list.clear()</code>: Removes all items from the list. </li>
+                <li><code>list.index(value, [, start[, stop]])</code>Returns the index of the first occurence of the indicated <code>value</code> in the list. 
+                If the item is not found, the method returns a <code>ValueError</code>. The optional arguments <code>start</code> and
+                <code>stop</code> indicates the slice of the data in slice notation (to be discussed later), used to limit the search to a portion of the list.</li>
+                <li><code>list.count(value)</code>: Counts the number of occurrences of <code>value</code> in the list.</li>
+                <li><code>list.sort()</code>: Sorts the items of the list.</li>
+                <li><code>list.reverse()</code>: Reverses the order of the items of the list.</li>
+                <li><code>list.copy()</code>Returns a copy of the list</li>
+            </ul>
+            You can also delete a slice of data from the list using the <code>del</code> statement. 
+
+            Try out the code below and tinker around with the list and the methods! 
+            
+            <p>
+                <form> 
+                    <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-3" rows="12" class="python-code">
+rhymes = ["clock", "shock", "luck", "dock", "duck", "duck", "sock", "mock", "luck"]
+rhymes .append("rock") 
+rhymes .append("clock")
+print("After appending: " + str(rhymes))
+rhymes.insert(3, "truck")
+print("After inserting: " + str(rhymes))
+rhymes.remove("luck")
+print("After removing: " + str(rhymes))
+print("Removed: " + str(rhymes.pop(4)))
+rhymes.index("sock")
+rhymes.count("duck")
+rhymes.sort()
+print("Sorted: " + str(rhymes))
+rhymes.reverse()
+print("Reversed: " + str(rhymes))
+          </textarea><br /> 
+                    <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+                    </form>
+                    </p>
+        
+        <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252)"> highlight </mark>
+
+        <h2>Sets</h2>
+        <div>
+            <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252);border-radius:0.1cm"> Sets</mark> 
+            are <b>unordered, unchangeable, and unindexed collections</b> with no duplicate elements. This means that they don't have any
+            specific order and current set items are unchangeable (but you can remove or add new items). They can also contain different data types. (<i>Python Sets</i>, n.d.) 
+            <br>
+            The curly brackets "{}" are used in defining a set and commas are
+            used to separate the elements. 
+            <br>
+            They are typically used for membership testing and eliminating duplicates. Additionally, they also support mathematical set operations.
+
+            <br><br>
+            For example, this is a set: <code>mySet = {1, 2, 3}</code>
+
+            Try the code below:
+            <p>
+                <form> 
+                    <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-4" rows="12" class="python-code">
+food = {"cake", "pizza", "apple pie"}
+items= ["pencil", "pen", "pencil", "pen", "eraser", "eraser", "stapler", "pencil"] 
+noDuplicateItems= set(items)
+print(noDuplicateItems)
+# update(iterable) method: adds the items to the set
+food.update(("icecream",))
+# remove() method: removes element from the set
+print("Updated: " + str(food))
+food.remove("pizza")
+print("Removed: " + str(food))
+# pop() method: removes random element from the set 
+noDuplicateItems.pop()
+print("Popped: " + str(noDuplicateItems))
+# Set Operations: union(), intersection(), difference() 
+print(food.union(noDuplicateItems))
+                        </textarea><br /> 
+                    <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+                    </form>
+                    </p>
+        </div>
+
+        <h2>Tuples</h2>
+        <div>
+            <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252);border-radius:0.1cm"> Tuples</mark> 
+            are <b>ordered and unchangeable collections</b>. They are written with round brackets "()", although the parentheses can be
+            omitted. For example, this is a tuple: <code>tuple = (1.5, 2.3, 1.7) </code>. They have a defined order unlike sets, they are 
+            unchangeable (no additions, removing, or changing of existing items), BUT it allows duplicates. 
+            
+            See the code below.
+            <p>
+                <form> 
+                    <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-5" rows="12" class="python-code">
+marineAnimals = ("whale", "starfish", "dolphin", "squid", "clownfish", "starfish") 
+# what happens if you put marineAnimals[1] = "shark"? you will get a TypeError!
+
+tuple1 = ("red",)
+# you can create a tuple with one element only
+
+tuple2 = ()
+# and an empty tuple
+
+                        </textarea><br /> 
+                    <button type="button" onclick="runit('code-5')" class="btn btn-success">Run</button> 
+                    </form>
+                    </p>
+        </div>
+
+
+     <h2>Dictionaries</h2>
+        <div>
+            <mark style = "background-color:rgb(59, 154, 122); color: rgb(252, 252, 252);border-radius:0.1cm"> Dictionaries</mark> 
+            are <b>collections composed of key-value pairs</b>. They are written with curly brackets "{}", where the keys and values are 
+            separated by a colon (:) and the pairs are separated by a comma (,). The keys and the values can be any data type and they can be 
+            different across the pairs and the dictionary. Here's an example of a dictionary:
+            <code>numbers = {5: "odd", 6: "even", 72: "even", 11: "odd"}</code><br><br>
+
+            A dictionary is indexed by its keys. Keys can be numbers or strings, and they can also be tuples as long as they only contain
+            strings, numbers, or tuples. The keys must be an immutable data type, and are not allowed to be mutable. For example: using this array of letters
+            <code>listA=["A","B","C","D","E","F"]</code> as a key is not allowed.
+
+
+     <h3>Accessing Keys and Values</h3>
+        <div>
+            To access the keys of a dictionary, use the <code>.keys()</code> method. To access 
+            the values, use the <code>.values()</code> method. 
+        </div>
+     <h3>Adding, Modifying, and Deleting Pairs</h3>
+        <div>
+            Data in a dictionary must come in key-value pairs. Thus, if we add a value to a dictionary, we have to 
+            define its key to add it to the dictionary. (Trotta, 2025).
+            
+            For example: 
+     <p>
+        <form> 
+             <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-6" rows="12" class="python-code">
+moneyInfo = {"Adam": 1200, "John": 2500}
+moneyInfo['Joy'] = 3000
+# where 'Joy' is the key and 3000 is the value
+print(moneyInfo)
+                        </textarea><br /> 
+                    <button type="button" onclick="runit('code-6')" class="btn btn-success">Run</button> 
+                    </form>
+                    </p>
+
+                You may also modify and delete existing pairs like so: 
+     <p>
+        <form> 
+             <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-7" rows="12" class="python-code">
+moneyInfo = {"Adam": 1200, "John": 2500, "Joy": 3000}
+# change Adam's amount to 2000 for example  (changing existing pairs )
+moneyInfo['Adam'] = 2000
+# remove John's key-value pair 
+del moneyInfo['John']
+print(moneyInfo)
+                        </textarea><br /> 
+                    <button type="button" onclick="runit('code-7')" class="btn btn-success">Run</button> 
+                    </form>
+                </p>
+        </div>
+<h2>Slicing Collections</h2>
+In ordered sequences, we can easily access the data individually through their indices or keys in dictionaries. 
+A string is an example of an ordered sequence. Let's take the string: <code>myWord = "order"</code>. 
+
+<h3>Indices</h3>
+In this case, we can get its individual characters: <code>myWord[0]</code> would print "o", <code>myWord[1]</code> would print "r" and so on.
+However, if we access something like <code>myWord[200]</code>, this would return an <code>IndexError</code>. 
+
+We can also provide a negative index, meaning it will start from the end of the list (the last item is -1, second to the last item is -2, and so on).
+For example, <code>myWord[-1]="r"</code>, <code>myWord[-2]="e"</code>, and <code>myWord[-3]="d"</code>. 
+<br><br>
+<h3>Slicing: Start and Stopping Endpoints</h3>
+To get an entire subsection of data though rather than individual ones, we can use slicing. The format is like this:
+<code>myCollection[start:end]</code>, where <code>start</code> refers to the starting point (inclusive), while the <code>end</code> 
+refers to the stopping point (non-inclusive). 
+
+For example, getting <code>myWord[2:4]</code> would give us only myWord[2] and myWord[3] which is "de". 
+However it is not required to provide these start and end parameters. There are three examples of this: 
+<code>myWord[0:]</code> (when we omit the end), <code>myWord[:2]</code>, when we omit the start, and <code>myWord[:]</code>
+when we omit both the start and the end. 
+<br><br>
+When we omit the end, this means the slice will continue until the very end of the sequence (end inclusive). 
+In this case, evaluating gives: <code>myWord[0:]="order"</code>. When we omit the start, the slice will start from
+the first element of the sequence until the specified stop (stop exclusive). In this case, evaluating gives: <code>myWord[:2]="or"</code>. 
+Finally, <code>myWord[:]</code> simply gives the whole list, having no start and stop parameters indicated.
+
+<h3>Slicing: Step Argument </h3>
+Aside from the start and stop argument, the step argument is also indicated in slice notation like so:
+<code>[start:end:step]</code>
+For example, if we have the string <code>exampleStr = "supercalifragilisticexpialidocious"</code>, and we want to get every other letter in this word,
+from indices 0 to 12 (inclusive), we use this slice notation: <code>[0:13:2]</code>. The step index can also be negative, which returns a slice where 
+the role of the starting and stopping endpoints are reversed. Try it out below: 
+     <p>
+        <form> 
+             <label class="python-label">PYTHON CODE</label>
+                        <textarea id="code-8" rows="12" class="python-code">
+exampleStr = "supercalifragilisticexpialidocious"
+print(exampleStr[0:13:2])
+print(exampleStr[::-1])
+print(exampleStr[30:25:-2])
+                        </textarea><br /> 
+                    <button type="button" onclick="runit('code-8')" class="btn btn-success">Run</button> 
+                    </form>
+                </p>
+        </div>
+        <h3> References </h3>
+        <p>
+            Gruppetta, S. (2023, July 7). Collecting Things • Python’s Collections (Data Structure Categories #5). The Python Coding Stack. 
+            https://www.thepythoncodingstack.com/p/collections-in-python-data-structure-5
+            <br>
+            Jason. (2025, April 23). Python Sets – Operations and examples. freeCodeCamp.org. 
+            https://www.freecodecamp.org/news/python-set-operations-explained-with-examples/
+            Kosourova, E. (2025, January 20). Iterable, ordered, mutable, and hashable Python objects explained. Towards Data Science.
+            https://towardsdatascience.com/iterable-ordered-mutable-and-hashable-python-objects-explained-1254c9b9e421/
+            Myrianthous, G. (2025, January 19). Mastering indexing and slicing in Python. Towards Data Science. 
+            https://towardsdatascience.com/mastering-indexing-and-slicing-in-python-443e23457125/
+            Trotta, F. (2025, January 21). Lists, tuples, dictionaries, and data frames in Python: the Complete guide. Towards Data Science. 
+            https://towardsdatascience.com/lists-tuples-dictionaries-and-data-frames-in-python-the-complete-guide-7ab54d4819ee/
+            <br>
+            Python sets. (n.d.). W3Schools. https://www.w3schools.com/python/python_sets.asp
+            Python Software Foundation. (2026). 5. Data structures. Python Documentation. 
+            https://docs.python.org/3/tutorial/datastructures.html
+            Python Tuples. (n.d.). W3Schools. https://www.w3schools.com/python/python_tuples.asp    
+            <br>
+            Python Software Foundation. (2026). Built-in types. Python Documentation. 
+            https://docs.python.org/3/builtins/stdtypes.html#typesseq-list
+
+        </p>
+
     </div>
 </body>
     <footer id="footer"></footer>
