@@ -122,30 +122,89 @@ print(seq("hello"))</textarea><br />
         <div class="ex">
         <div class="ex-header">Example 2</div>
         <div class="ex-content" style="text-align: left;">
-            <p>Identify the parts of the recursion used to generate the box sizes in this meme (taken from <a href="https://medium.com/launch-school/what-is-recursion-an-introduction-and-technical-discussion-3c81547d03f0">here</a>):</p>
+            <p>Identify the parts of the recursion used to generate the box sizes in this meme, taken from Mayo (2024):</p>
             <p><center><img src="images/recursion-meme.png" width="400"></center></p>
         </div>
         </div>
-
-        <details>
-            <summary>Solution to Example 2</summary>
             
-            <p>Let's number the boxes according to size, with the largest being the $0$th box, the second largest being the $1$st box, and so on, and let $s(n)$ be the size of the $n$th box. Suppose the $0$th box has size $S$. Then, our base case is $n=0$, and our base definition is $s(n)=S$.</p>
+        <p>Let's number the boxes according to size, with the largest being the $0$th box, the second largest being the $1$st box, and so on, and let $s(n)$ be the size of the $n$th box. Suppose the $0$th box has size $S$. Then, our base case is $n=0$, and our base definition is $s(n)=S$.</p>
 
-            <p>Now, since the size of each box is a constant multiplied to the size of the previous box, we have that $s(n)=c\cdot s(n-1)$ for some constant $c$ when $n$ is a integer greater than zero. So, our recursive case is $n>0$ and $n$ is an integer, and our recursive definition is $s(n)=c\cdot s(n-1)$.</p>
-        </details>
-
-        <p>Developing a program that computes the size of each box given certain parameters will be deferred to the problem section.</p>
-
+        <p>Now, since the size of each box is a constant multiplied to the size of the previous box, we have that $s(n)=c\cdot s(n-1)$ for some constant $c$ when $n$ is a integer greater than zero. So, our recursive case is $n>0$ and $n$ is an integer, and our recursive definition is $s(n)=c\cdot s(n-1)$.</p>
+        
         <h2>Memoization</h2>
+        
+        <p>Okay, recursion is a great method of doing things, but it has some flaws as it is right now. Consider the following code:</p>
 
-        <p>Okay, recursion is a great method of doing things, but it has one fundamental flaw. Try running this program, which contains our <code>seq</code> function from earlier:</p>
+        <div class="ex">
+        <div class="ex-header">Example 3</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Define the sequence $b$ such that $b_0=0$, $b_1=1$, and for any integer $n$ greater than 1, we have $b_n=b_{n-2}+nb_{n-1}$. Then, the function <code>seqTwo</code> below returns the value of $b_n$ given a value of $n$.</p>
 
-         <!--START CODE--------------------------------------------------------->
+            <!--START CODE--------------------------------------------------------->
+            <p>
+            <form> 
+            <label class="python-label">PYTHON CODE</label>
+<textarea id="code-4" class="python-code">
+def seqTwo(n):
+    if type(n) != int:
+        raise TypeError("Invalid value; must be a nonnegative integer")
+    if n < 0:
+        raise ValueError("Invalid value; must be a nonnegative integer")
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return seqTwo(n-2) + seqTwo(n-1) * n
+
+# testing the function
+print(seqTwo(100))</textarea><br /> 
+            <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+            </form>
+            </p>
+            <!--END CODE----------------------------------------------------------->
+        </div>
+        </div>
+
+        <p>Notice how the program ends up running for a very long time (and, in our web interpreter, does not finish due to the program running for more than 10 seconds). This is because many instances <code>seqTwo(m)</code> are called throughout the process even though their values have already been computed. For example:</p>
+        <blockquote>
+            <p>Suppose we call <code>seqTwo(100)</code>. This, in turn, calls <code>seqTwo(99)</code> and <code>seqTwo(98)</code>. These two calls then result in computing <code>seqTwo(98)</code> and <code>seqTwo(97)</code>, and <code>seqTwo(97)</code> and <code>seqTwo(96)</code>, respectively, and so on.</p>
+        </blockquote>
+        <p>So, as a result, the number of times we call <code>seqTwo</code> grows exponentially, and thus we call it way more than 100 times. To fix this, we need to find a way to compute each term only once throughout the entire program.</p>
+
+        <p>One solution is to store all previously computed data; here, we will do so using a dictionary where the keys are the values of $n$ and the values are the return values of <code>seqTwo(n)</code>. Then, if $n$ is not already a key in the dictionary, we use the recursive definition to compute the value and store it in the dictionary. Then, we return the corresponding value in the dictionary. This process is called <b>memoization</b>. Notice how the program doesn't time out anymore when we use this solution:</p>
+
+        <!--START CODE--------------------------------------------------------->
         <p>
         <form> 
         <label class="python-label">PYTHON CODE</label>
-<textarea id="code-4" class="python-code">
+<textarea id="code-5" class="python-code">
+data = {0: 0, 1: 1}
+
+def seqTwo(n):
+    if type(n) != int:
+        raise TypeError("Invalid value; must be a nonnegative integer")
+    if n < 0:
+        raise ValueError("Invalid value; must be a nonnegative integer")
+    if not (n in data):
+        data[n] = seqTwo(n-2) + seqTwo(n-1) * n
+    return data[n]
+
+# testing the function
+print(seqTwo(100))</textarea><br /> 
+        <button type="button" onclick="runit('code-5')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <h2>Call stacks</h2>
+
+        <p>Now, recursion (and even memoization, as it is a type of recursion) has another flaw. Try running this program, which contains our <code>seq</code> function from earlier:</p>
+
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-6" class="python-code">
 def seq(n):
     if type(n) != int:
         raise TypeError("Invalid value; must be a nonnegative integer")
@@ -158,12 +217,14 @@ def seq(n):
 
 # testing the function
 print(seq(9999))</textarea><br /> 
-        <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+        <button type="button" onclick="runit('code-6')" class="btn btn-success">Run</button> 
         </form>
         </p>
-        <!--END CODE----------------------------------------------------------->
 
-        <p>We end up getting a <code>RecursionError</code> that says <code>Maximum call stack size exceeded</code>. Why is that? Well, whenever our function calls itself, it adds another layer to what is called the <b>call stack</b>, which contains the function calls that are in progress, so that the currently running function can use it. However, the number of layers has a limit, so once this limit is reached, a <b>stack overflow</b> occurs, and the recursion cannot be completed. This is pretty bad, since this means that we cannot use our <code>seq</code> function to calculate large terms (our web interpreter breaks down starting with <code>seq(8193)</code>).</p>
+        <p>We end up getting a <code>RecursionError</code> that says <code>Maximum call stack size exceeded</code>. Why is that? Well, whenever our function calls itself, it adds another layer to what is called the <b>call stack</b>, which contains the function calls that are in progress, so that the currently running function can use it. However, the number of layers has a limit, so once this limit is reached, a <b>stack overflow</b> occurs, and the recursion cannot be completed. This means that we cannot use our <code>seq</code> function to calculate very large terms (our web interpreter breaks down starting with <code>seq(8193)</code>). Ultimately, this depends on the capacity of the call stack, which may vary, so it is important to take this into consideration when writing recursion programs.</p>
+
+        <h2>Reference</h2>
+        <p id="ref-mayo">Mayo, P. (2024). <i>What is recursion? An introduction and technical discussion</i>. Launch School Community. <a href="https://medium.com/launch-school/what-is-recursion-an-introduction-and-technical-discussion-3c81547d03f0">https://medium.com/launch-school/what-is-recursion-an-introduction-and-technical-discussion-3c81547d03f0</a></p>
     </div>
 </body>
     <footer id="footer"></footer>
