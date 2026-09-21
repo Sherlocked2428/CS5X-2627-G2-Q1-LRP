@@ -57,7 +57,7 @@
             <p>
                 <form> 
                     <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-3" rows="12" class="python-code">
+                        <textarea id="code-1" rows="12" class="python-code">
 orderedCollection = ["math", "science", "english", "history"]  
 unorderedCollection = set(orderedCollection)
 
@@ -65,9 +65,8 @@ print(orderedCollection)
 print(unorderedCollection)
 
 # what happens if we get unorderedCollection[2]? 
-# notice we can put orderedCollection[2] but not unorderedCollection[2] as sets have no order and doesn't support indices.             
-                        </textarea><br /> 
-                    <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+# notice we can put orderedCollection[2] but not unorderedCollection[2] as sets have no order and doesn't support indices.</textarea><br /> 
+                    <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
                     </form>
                     </p>    
         <h3>Mutability</h3>
@@ -110,7 +109,7 @@ print(unorderedCollection)
             <p>
                 <form> 
                     <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-3" rows="12" class="python-code">
+                        <textarea id="code-2" rows="12" class="python-code">
 rhymes = ["clock", "shock", "luck", "dock", "duck", "duck", "sock", "mock", "luck"]
 rhymes .append("rock") 
 rhymes .append("clock")
@@ -125,9 +124,8 @@ rhymes.count("duck")
 rhymes.sort()
 print("Sorted: " + str(rhymes))
 rhymes.reverse()
-print("Reversed: " + str(rhymes))
-          </textarea><br /> 
-                    <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+print("Reversed: " + str(rhymes))</textarea><br /> 
+                    <button type="button" onclick="runit('code-2')" class="btn btn-success">Run</button> 
                     </form>
                     </p>
         
@@ -151,7 +149,7 @@ print("Reversed: " + str(rhymes))
             <p>
                 <form> 
                     <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-4" rows="12" class="python-code">
+                        <textarea id="code-3" rows="12" class="python-code">
 food = {"cake", "pizza", "apple pie"}
 items= ["pencil", "pen", "pencil", "pen", "eraser", "eraser", "stapler", "pencil"] 
 noDuplicateItems= set(items)
@@ -166,9 +164,8 @@ print("Removed: " + str(food))
 noDuplicateItems.pop()
 print("Popped: " + str(noDuplicateItems))
 # Set Operations: union(), intersection(), difference() 
-print(food.union(noDuplicateItems))
-                        </textarea><br /> 
-                    <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+print(food.union(noDuplicateItems))</textarea><br /> 
+                    <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
                     </form>
                     </p>
         </div>
@@ -184,7 +181,7 @@ print(food.union(noDuplicateItems))
             <p>
                 <form> 
                     <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-5" rows="12" class="python-code">
+                        <textarea id="code-4" rows="12" class="python-code">
 marineAnimals = ("whale", "starfish", "dolphin", "squid", "clownfish", "starfish") 
 # what happens if you put marineAnimals[1] = "shark"? you will get a TypeError!
 
@@ -192,10 +189,8 @@ tuple1 = ("red",)
 # you can create a tuple with one element only
 
 tuple2 = ()
-# and an empty tuple
-
-                        </textarea><br /> 
-                    <button type="button" onclick="runit('code-5')" class="btn btn-success">Run</button> 
+# and an empty tuple</textarea><br /> 
+                    <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
                     </form>
                     </p>
         </div>
@@ -228,13 +223,12 @@ tuple2 = ()
      <p>
         <form> 
              <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-6" rows="12" class="python-code">
+                        <textarea id="code-5" rows="12" class="python-code">
 moneyInfo = {"Adam": 1200, "John": 2500}
 moneyInfo['Joy'] = 3000
 # where 'Joy' is the key and 3000 is the value
-print(moneyInfo)
-                        </textarea><br /> 
-                    <button type="button" onclick="runit('code-6')" class="btn btn-success">Run</button> 
+print(moneyInfo)</textarea><br /> 
+                    <button type="button" onclick="runit('code-5')" class="btn btn-success">Run</button> 
                     </form>
                     </p>
 
@@ -242,15 +236,14 @@ print(moneyInfo)
      <p>
         <form> 
              <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-7" rows="12" class="python-code">
+                        <textarea id="code-6" rows="12" class="python-code">
 moneyInfo = {"Adam": 1200, "John": 2500, "Joy": 3000}
 # change Adam's amount to 2000 for example  (changing existing pairs )
 moneyInfo['Adam'] = 2000
 # remove John's key-value pair 
 del moneyInfo['John']
-print(moneyInfo)
-                        </textarea><br /> 
-                    <button type="button" onclick="runit('code-7')" class="btn btn-success">Run</button> 
+print(moneyInfo)</textarea><br /> 
+                    <button type="button" onclick="runit('code-6')" class="btn btn-success">Run</button> 
                     </form>
                 </p>
         </div>
@@ -289,13 +282,12 @@ the role of the starting and stopping endpoints are reversed. Try it out below:
      <p>
         <form> 
              <label class="python-label">PYTHON CODE</label>
-                        <textarea id="code-8" rows="12" class="python-code">
+                        <textarea id="code-7" rows="12" class="python-code">
 exampleStr = "supercalifragilisticexpialidocious"
 print(exampleStr[0:13:2])
 print(exampleStr[::-1])
-print(exampleStr[30:25:-2])
-                        </textarea><br /> 
-                    <button type="button" onclick="runit('code-8')" class="btn btn-success">Run</button> 
+print(exampleStr[30:25:-2])</textarea><br /> 
+                    <button type="button" onclick="runit('code-7')" class="btn btn-success">Run</button> 
                     </form>
                 </p>
         </div>
